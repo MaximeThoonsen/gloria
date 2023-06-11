@@ -57,6 +57,8 @@ create table question (
 
 Copy the `.env.local.example` file to `.env.local` and update the variables with your own values.
 
+Modify the gloria.config.ts file to make the personal assistant answer the question as you want.
+
 ## Run the development server
 
 Run `yarn dev` to start the development server.
