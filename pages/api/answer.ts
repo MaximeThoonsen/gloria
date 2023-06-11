@@ -29,7 +29,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       vectorColumnName: 'embedding',
       columns: {
         id: PrismaVectorStore.IdColumn,
-        content: PrismaVectorStore.ContentColumn,
+        pageContent: PrismaVectorStore.ContentColumn,
       },
     }
   )
