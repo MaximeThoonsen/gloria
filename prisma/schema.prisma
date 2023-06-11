@@ -1,0 +1,42 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model question {
+  id        String     @default(cuid()) @id
+  content   String?
+  answer    String?
+  successFromLLM Boolean @default(false)
+  createdAt DateTime   @default(now()) @map(name: "created_at")
+  published Boolean @default(false)
+  author    user?   @relation(fields: [authorId], references: [id])
+  authorId  String?
+}
+
+model user {
+  id            String       @default(cuid()) @id
+  name          String?
+  email         String?   @unique
+  createdAt     DateTime  @default(now()) @map(name: "created_at")
+  updatedAt     DateTime  @updatedAt @map(name: "updated_at")
+  questions     question[]
+  @@map(name: "users")
+}
+
+model documents {
+  id        String @id
+  pageContent   String?
+  sourceType   String?
+  sourceName   String?
+  hash      String?
+  metadata Json?
+  embedding Unsupported("vector (1536)")?
+}
