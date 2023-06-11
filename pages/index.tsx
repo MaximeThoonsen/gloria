@@ -7,7 +7,7 @@ import { sortedBlogPost, allCoreContent } from '@/lib/utils/contentlayer'
 import { InferGetStaticPropsType } from 'next'
 import NewsletterForm from '@/components/NewsletterForm'
 import { allBlogs } from 'contentlayer/generated'
-import QuestionForm from "@/components/questions";
+import QuestionForm from '@/components/questions'
 
 const MAX_DISPLAY = 5
 
