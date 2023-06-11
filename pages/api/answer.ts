@@ -4,7 +4,11 @@ import { OpenAIEmbeddings } from 'langchain/embeddings'
 import { LLMChain, StuffDocumentsChain, VectorDBQAChain } from 'langchain/chains'
 import { OpenAI, PromptTemplate } from 'langchain'
 import { PrismaClient, Prisma, documents } from '@prisma/client'
-import { personalPromptTemplate } from "../../gloria.config";
+import { personalPromptTemplate } from '../../gloria.config'
+
+export const config = {
+  runtime: 'edge',
+}
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default async (req: NextApiRequest, res: NextApiResponse) => {
