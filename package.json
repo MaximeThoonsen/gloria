@@ -13,6 +13,7 @@
     "serve": "next start",
     "analyze": "cross-env ANALYZE=true next build",
     "lint": "next lint --fix --dir pages --dir components --dir lib --dir layouts --dir scripts",
+    "update:kb": "ts-node ai-tools/create-embeddings-from-blog-data.ts",
     "prepare": "husky install"
   },
   "dependencies": {

@@ -1,4 +1,4 @@
-import { documents, Prisma, PrismaClient } from '@prisma/client'
+import { PrismaClient } from '@prisma/client'
 import { DirectoryLoader, TextLoader } from 'langchain/document_loaders'
 import { CharacterTextSplitter } from 'langchain/text_splitter'
 import { createDocumentsBlogFromDocumentsArray } from '../langchain/DocumentManager'
@@ -6,6 +6,8 @@ import { OpenAIEmbeddings } from 'langchain/embeddings'
 import { VectorStoreBlog } from '../langchain/VectorStoreBlog'
 
 const prisma = new PrismaClient()
+const url = process.env.DATABASE_URL
+if (!url) throw new Error(`Expected env var DATABASE_URL`)
 
 export const run = async () => {
   const loader = new DirectoryLoader('data/blog', {
@@ -78,32 +80,6 @@ export const run = async () => {
     }
   }
 
-  // eslint-disable-next-line prettier/prettier
-  // const doc = {
-  //   id: docsToUpsert[0].id,
-  //   content: docsToUpsert[0].content,
-  //   embedding: docsToUpsert[0].embedding,
-  //   metadata: docsToUpsert[0].metadata,
-  //   sourceName: docsToUpsert[0].sourceName,
-  //   sourceType: docsToUpsert[0].sourceType,
-  //   hash: docsToUpsert[0].hash,
-  // } as documents
-  //
-  // await prisma.documents.create({ data: doc })
-
-  // const vectorStore = VectorStoreBlog.withModel<documents>(prisma).create(new OpenAIEmbeddings(), {
-  //   prisma: Prisma,
-  //   tableName: 'documents',
-  //   vectorColumnName: 'embedding',
-  //   columns: {
-  //     id: VectorStoreBlog.IdColumn,
-  //     content: VectorStoreBlog.ContentColumn,
-  //   },
-  // })
-
-  const url = process.env.DATABASE_URL
-  if (!url) throw new Error(`Expected env var DATABASE_URL`)
-
   const vectorStore = new VectorStoreBlog(new OpenAIEmbeddings(), {
     postgresConnectionOptions: {
       type: 'postgres',
@@ -112,8 +88,6 @@ export const run = async () => {
   })
 
   await vectorStore.addDocuments(docsToUpsert)
-
-  console.log('done')
 }
 
-run()
+run().then(() => console.log('done'))

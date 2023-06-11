@@ -57,7 +57,18 @@ create table question (
 
 Copy the `.env.local.example` file to `.env.local` and update the variables with your own values.
 
+## Customize the personal assistant
+
+### Change the prompt
 Modify the gloria.config.ts file to make the personal assistant answer the question as you want.
+
+### Create the private data needed for the personal assistant to answer the questions
+
+Fill the knowledge-base folder with text files that contains your personal information.
+All your articles in the data folder will also be used to create the knowledge base.
+
+Whenever you want to make new information available you can just run the `npm run update:kb` command.
+This command will populate the table documents in your database with the new information.
 
 ## Run the development server
 
