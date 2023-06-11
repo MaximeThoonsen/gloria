@@ -1,15 +1,20 @@
-# Glorai : a personal augmented blog build with Next.js, OpenAI, LangChain and Supabase
+# Gloria: your a personal blog augmented with Generative AI
+Gloria will help you create a free interactive blog powered by AI.
+It will have a growing set of tool to help you manipulate information and create engaging blog post with the help of AI.
 
-The goal of this repo is to allow you to create a personal blog with a personal assistant that will help you
-answer question's from your readers. You can see a demo at https://maximeai.com
+The first tool is a personal assistant that will help you answer questions from your readers.
+You can see a demo at https://maximeai.com
 
-The stack is Nextjs and Langchain hosted on Vercel and Supabase for the database.
+The stack is Nextjs and Langchain. It is hosted on Vercel and Supabase for the database. It has been optimized to work on free tiers.
+
+Here is a screenshot of the homepage:
 
 ![Homepage of the blog](./docs/homepage.png)
 
+All contributions are welcome.
 ## Installation
 
-Install the packages: `yarn install`
+Install the packages: `npm install`
 
 ### Create the table that will store the documents
 
@@ -62,11 +67,14 @@ Copy the `.env.local.example` file to `.env.local` and update the variables with
 ## Customize the personal assistant
 
 ### Change the prompt
-Modify the gloria.config.ts file to make the personal assistant answer the question as you want.
+Modify the `gloria.config.ts file to make the personal assistant answer the question as you want.
 
 ### Create the private data needed for the personal assistant to answer the questions
 
-Fill the knowledge-base folder with text files that contains your personal information.
+Fill the `knowledge-base` folder with text files that contains your personal information.
+
+You can also use any LangChain's [documents loader](https://js.langchain.com/docs/modules/indexes/document_loaders/examples/file_loaders/) to create the knowledge base.
+
 All your articles in the data folder will also be used to create the knowledge base.
 
 Whenever you want to make new information available you can just run the `npm run update:kb` command.
