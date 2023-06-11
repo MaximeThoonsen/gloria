@@ -7,6 +7,7 @@ import { sortedBlogPost, allCoreContent } from '@/lib/utils/contentlayer'
 import { InferGetStaticPropsType } from 'next'
 import NewsletterForm from '@/components/NewsletterForm'
 import { allBlogs } from 'contentlayer/generated'
+import QuestionForm from "@/components/questions";
 
 const MAX_DISPLAY = 5
 
@@ -30,6 +31,12 @@ export default function Home({ posts }: InferGetStaticPropsType<typeof getStatic
           <p className="text-lg leading-7 text-gray-500 dark:text-gray-400">
             {siteMetadata.description}
           </p>
+        </div>
+        <div className="pt-6 pb-6 text-sm text-gray-700 dark:text-gray-300">
+          <p className="text-xl font-bold mb-4">
+            You can ask me a question and my personal AI will answer you.
+          </p>
+          <QuestionForm />
         </div>
         <ul className="divide-y divide-gray-200 dark:divide-gray-700">
           {!posts.length && 'No posts found.'}

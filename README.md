@@ -5,6 +5,8 @@ answer question's from your readers. You can see a demo at https://maximeai.com
 
 The stack is Nextjs and Langchain hosted on Vercel and Supabase for the database.
 
+![Homepage of the blog](./docs/homepage.png)
+
 ## Installation
 
 Install the packages: `yarn install`
