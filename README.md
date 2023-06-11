@@ -12,8 +12,13 @@ Install the packages: `yarn install`
 ### Create the table that will store the documents
 
 Run this SQL query in your postgresql database to create the table that will store the documents.
+⚠️ Your postgresql database must have the [pgvector extension](https://github.com/pgvector/pgvector) installed.
+It is installed on your Supabase instances.
+You can also use the provided docker-compose example that use the [official docker image](https://hub.docker.com/r/ankane/pgvector).
 
 ```sql
+CREATE EXTENSION IF NOT EXISTS vector;
+
 create table documents (
 id text NOT NULL primary key,
 "pageContent" text, -- corresponds to Document.pageContent

@@ -4,6 +4,7 @@ import { OpenAIEmbeddings } from 'langchain/embeddings'
 import { LLMChain, StuffDocumentsChain, VectorDBQAChain } from 'langchain/chains'
 import { OpenAI, PromptTemplate } from 'langchain'
 import { PrismaClient, Prisma, documents } from '@prisma/client'
+import { personalPromptTemplate } from "../../gloria.config";
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default async (req: NextApiRequest, res: NextApiResponse) => {
@@ -36,10 +37,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   })
 
   const promptTemplateBot = /*#__PURE__*/ new PromptTemplate({
-    template:
-      'You act as if you were Maxime Thoonsen a CTO of a digital service company that creates complex web applications for their customers.' +
-      "Your goal is to answer questions from people who are reading Maxime's blog. Use the following pieces of context to answer the question in a FRIENDLY way at the end as if you were Maxime. If you don't know the answer, just say that you don't know, don't try to make up an answer. Context:\n\n{context}\n\nQuestion: {question}\nHelpful Answer:",
-
+    template: personalPromptTemplate,
     inputVariables: ['context', 'question'],
   })
 
