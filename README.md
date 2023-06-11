@@ -1,4 +1,5 @@
 # Gloria: your a personal blog augmented with Generative AI
+
 Gloria will help you create a free interactive blog powered by AI.
 It will have a growing set of tool to help you manipulate information and create engaging blog post with the help of AI.
 
@@ -12,6 +13,7 @@ Here is a screenshot of the homepage:
 ![Homepage of the blog](./docs/homepage.png)
 
 All contributions are welcome.
+
 ## Installation
 
 Install the packages: `npm install`
@@ -67,6 +69,7 @@ Copy the `.env.local.example` file to `.env.local` and update the variables with
 ## Customize the personal assistant
 
 ### Change the prompt
+
 Modify the `gloria.config.ts file to make the personal assistant answer the question as you want.
 
 ### Create the private data needed for the personal assistant to answer the questions
@@ -82,7 +85,7 @@ This command will populate the table documents in your database with the new inf
 
 ## Run the development server
 
-Run `yarn dev` to start the development server.
+Run `npm run dev` to start the development server.
 
 ## Deploy on Vercel
 
