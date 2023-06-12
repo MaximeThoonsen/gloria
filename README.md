@@ -1,4 +1,4 @@
-# Gloria: your a personal blog augmented with Generative AI
+# Gloria: your personal blog augmented with Generative AI
 
 Gloria will help you create a free interactive blog powered by AI.
 It will have a growing set of tool to help you manipulate information and create engaging blog post with the help of AI.
